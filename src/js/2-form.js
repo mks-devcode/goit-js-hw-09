@@ -8,7 +8,7 @@ function getFromLs(key) {
 };
 
 const localStorageKey = 'feedback-form-state';
-const formData = getFromLs(localStorageKey) || { email: '', message: '' };
+let formData = getFromLs(localStorageKey) || { email: '', message: '' };
 
 const formElem = document.querySelector('.feedback-form');
 console.log(formElem);
@@ -34,7 +34,11 @@ formElem.addEventListener('submit', (e) => {
     };
     console.log(formData.email);
     console.log(formData.message);
+
     localStorage.removeItem(localStorageKey)
     formElem.reset();
+
+    formData.email = '';
+    formData.message = '';
 });
 
